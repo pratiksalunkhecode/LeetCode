@@ -20,7 +20,7 @@ class Solution {
            }
            }
        }
-             return res == -1 ? -1 : arr[res]; 
+             return res == -1 ? -1 : arr[res]; //condition ? valueIfTrue : valueIfFalse;
        
     }
   
