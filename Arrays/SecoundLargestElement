@@ -20,7 +20,7 @@ class Solution {
            }
            }
        }
-            return arr[res];
+             return res == -1 ? -1 : arr[res]; 
        
     }
   
@@ -43,4 +43,3 @@ class Solution {
     }
     
 }
-
