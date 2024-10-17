@@ -8,6 +8,8 @@ class Solution {
             for(int j = i+1; j < n; j++)
             {
                 res = Math.max(res, nums[j] - nums[i]);
+                 //nums[j] - nums[i]: Calculates the difference between the elements at indices i and j.
+                 //Math.max(res, ...): Compares the current maximum difference (res) with the new difference and keeps the larger value.
             }
 
            
