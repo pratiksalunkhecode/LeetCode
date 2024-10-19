@@ -7,7 +7,7 @@ Output: 9
 Explanation: Max subarray sum is 9 of elements (1, 2, 3, -2, 5).
 ===============================================
 Naive
-
+o(n2)
 class Solution {
 
     // arr: input array
@@ -26,6 +26,26 @@ class Solution {
                 curr = curr + arr[j];
                 res = Math.max(res, curr);
             }
+        }
+        return res;
+    }
+}
+===========================================================
+Optimal  
+o(n)
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+
+        int n = nums.length;
+        int res = nums[0];
+        int maxEnding = nums[0];
+
+        for(int i = 1; i < n; i++)
+        {
+           maxEnding = Math.max(maxEnding + nums[i], nums[i]);
+
+           res = Math.max(res, maxEnding);
         }
         return res;
     }
