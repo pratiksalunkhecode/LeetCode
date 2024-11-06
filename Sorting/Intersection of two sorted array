@@ -1,0 +1,32 @@
+naive solution
+TC : 0(m*n)
+===========================================
+class Solution {
+    // Function to return a list containing the intersection of two arrays.
+    static ArrayList<Integer> intersection(int arr1[], int arr2[]) {
+        ArrayList<Integer> intersection = new ArrayList<>();
+       int m = arr1.length;
+       int n = arr2.length;
+       
+       for(int i = 0; i < m; i++)
+       {
+           if(i > 0 && arr1[i] == arr1[i-1])
+           {
+           continue;
+           }
+           
+           for(int j = 0; j < n ; j++)
+           {
+               if(arr1[i] == arr2[j])
+               {
+                   intersection.add(arr1[i]);
+                   break;
+               }
+           }
+       }
+       
+       return intersection;
+    }
+}
+
+=============================================================
