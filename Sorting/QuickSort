@@ -1,0 +1,40 @@
+class Solution {
+    // Function to sort an array using quick sort algorithm.
+    static void quickSort(int arr[], int low, int high) {
+         if (low < high) {
+            // Partitioning index
+            int pi = partition(arr, low, high);
+            
+            // Recursively sort elements before and after partition
+            quickSort(arr, low, pi - 1);  // Before pivot
+            quickSort(arr, pi + 1, high); // After pivot
+         }
+    }
+
+    static int partition(int arr[], int low, int high) {
+           // Choose the last element as pivot
+        int pivot = arr[high];
+        
+        // Pointer for the smaller element
+        int i = (low - 1); 
+        
+        for (int j = low; j <= high - 1; j++) {
+            // If current element is smaller than or equal to pivot
+            if (arr[j] <= pivot) {
+                i++; // Increment pointer for smaller element
+                // Swap elements at i and j
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        
+        // Swap pivot element with the element at i + 1
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        
+        // Return the partition index
+        return (i + 1);
+    }
+}
