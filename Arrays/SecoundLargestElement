@@ -39,6 +39,71 @@ class Solution {
             }
             
         }
+
+
+
+
+
+
+=================================================================
+secound approach
+
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        int n = arr.length;
+        int largest = largestElement(arr,n);
+        int second = Integer.MIN_VALUE;
+        
+         if(n == 0)
+        {
+            return -1;
+        }
+        if(n == 1)
+        {
+            return -1;
+        }
+        
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[i] != largest)
+            {
+            if(arr[i] > second)
+            {
+                second = arr[i];
+            }
+            }
+        }
+         if(second == Integer.MIN_VALUE)
+        {
+            return -1;
+        }
+        return second;
+    }
+     
+      static int largestElement(int[] arr, int n) {
+        // Write your code here.
+        int res = 0;
+        if(n == 0)
+        {
+            return -1;
+        }
+
+        if(n == 1)
+        {
+            return arr[res];
+        }
+
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[i] > arr[res])
+            {
+                res = i;
+            }
+        }
+          return arr[res];
+    }
+    
+}
         return arr[largest];
     }
     
