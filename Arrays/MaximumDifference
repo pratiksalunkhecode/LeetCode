@@ -1,3 +1,6 @@
+Time: O(n2)
+Sapce: O(1)
+
 class Solution {
     public int maximumDifference(int[] nums) {
         int n = nums.length;
@@ -18,3 +21,31 @@ return res;
 
     }
 }
+=============================================
+Time: O(n)
+Space: O(1)
+
+class Solution {
+    public int findMaxDiff(int[] arr) {
+        // code here
+        
+        int n = arr.length;
+        
+        
+        
+        int res = arr[1] - arr[0];
+        
+        int minval = arr[0];
+        
+        for(int j = 1; j < n; j++)
+        {
+         //   res = Math.max(arr, arr[j] - minval);
+             res = Math.max(res, arr[j] - minval);
+            
+            minval = Math.min(minval, arr[j]);
+        }
+        
+        return res;
+    }
+}
+
