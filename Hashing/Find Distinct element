@@ -1,0 +1,42 @@
+Time: O(n)
+Space: O(n)
+==============================================================
+static int distinct(int arr[]) {
+    int n = arr.length;
+    HashSet<Integer> s = new HashSet<>();
+    
+    for(int i = 0; i < n; i++)
+    {
+        s.add(arr[i]);
+    }
+    return s.size();
+}
+======================
+Time: O(n2)
+space: O(1)
+
+static int distinct(int arr[]) {
+    int n = arr.length;
+    
+    int res = 0;
+    
+    for(int i = 0; i < n; i++)
+    {
+        boolean flag = false;
+        
+        for(int j = 0; j < i; j++)
+        {
+            if(arr[i] == arr[j])
+            {
+                flag = true;
+                break;
+            }
+        }
+        
+        if(flag == false)
+        {
+            res++;
+        }
+    }
+    return res;
+}
