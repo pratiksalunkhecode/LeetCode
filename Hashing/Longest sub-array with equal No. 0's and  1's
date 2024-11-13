@@ -1,0 +1,79 @@
+Step-by-Step Dry Run
+Input Array: arr = {1, 0, 1, 1, 0, 0, 1}
+
+Step 1 - Convert 0s to -1s After converting all 0s to -1s, the array becomes:
+
+makefile
+Copy code
+arr = {1, -1, 1, 1, -1, -1, 1}
+Step 2 - Calculate Prefix Sum and Track Largest Zero Sum Subarray
+
+We initialize:
+
+sum = 0 (to keep track of the prefix sum)
+maxLen = 0 (to store the maximum length of the balanced subarray found)
+sumMap = {} (to store the first occurrence of each prefix sum)
+We then iterate through the modified array:
+
+Iteration 1 (i = 0)
+sum += arr[0] → sum = 0 + 1 = 1
+sum is not 0, and 1 is not in sumMap, so add sumMap[1] = 0
+Iteration 2 (i = 1)
+sum += arr[1] → sum = 1 + (-1) = 0
+sum is 0, so maxLen = i + 1 = 1 + 1 = 2
+Iteration 3 (i = 2)
+sum += arr[2] → sum = 0 + 1 = 1
+sum is already in sumMap at index 0, so maxLen = max(2, i - sumMap[1]) = max(2, 2 - 0) = 2
+Iteration 4 (i = 3)
+sum += arr[3] → sum = 1 + 1 = 2
+sum is not in sumMap, so add sumMap[2] = 3
+Iteration 5 (i = 4)
+sum += arr[4] → sum = 2 + (-1) = 1
+sum is already in sumMap at index 0, so maxLen = max(2, i - sumMap[1]) = max(2, 4 - 0) = 4
+Iteration 6 (i = 5)
+sum += arr[5] → sum = 1 + (-1) = 0
+sum is 0, so maxLen = i + 1 = 5 + 1 = 6
+Iteration 7 (i = 6)
+sum += arr[6] → sum = 0 + 1 = 1
+sum is already in sumMap at index 0, so maxLen = max(6, i - sumMap[1]) = max(6, 6 - 0) = 6
+Final Result:
+
+The longest subarray with an equal number of 0s and 1s has length 6. This subarray spans from index 1 to index 6 (0-based indexing) in the original array.
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    static int largestZeroSubarray(int arr[], int n) {
+        // Step 1: Convert all 0s in the array to -1s
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 0) {
+                arr[i] = -1;
+            }
+        }
+
+        // Step 2: Calculate prefix sum and find the longest subarray with sum 0
+        Map<Integer, Integer> sumMap = new HashMap<>();
+        int sum = 0, maxLen = 0;
+
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+
+            // If sum is zero, we found a balanced subarray from the start
+            if (sum == 0) {
+                maxLen = i + 1;
+            }
+
+            // If this sum was seen before, calculate the length of the subarray
+            if (sumMap.containsKey(sum)) {
+                maxLen = Math.max(maxLen, i - sumMap.get(sum));
+            } else {
+                // Store the first occurrence of this sum
+                sumMap.put(sum, i);
+            }
+        }
+
+        return maxLen;
+    }
+}
