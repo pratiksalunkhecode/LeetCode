@@ -39,8 +39,46 @@ sum is already in sumMap at index 0, so maxLen = max(6, i - sumMap[1]) = max(6, 
 Final Result:
 
 The longest subarray with an equal number of 0s and 1s has length 6. This subarray spans from index 1 to index 6 (0-based indexing) in the original array.
+==========================================================================================================================
+class Solution {
+    public int maxLen(int[] arr) {
+        // Your code here
+        int res = 0;
+        int n = arr.length;
+        
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[i] == 0)
+            {
+                arr[i] = -1;
+            }
+        }
+        
+       Map<Integer, Integer> sumMap = new HashMap<>();
+        int pre_sum = 0;
+        for(int i = 0; i < n; i++)
+        {
+           pre_sum = pre_sum + arr[i];
+            
+            if(pre_sum == 0)
+            {
+                res = i+1;
+            }
+            
+            if(sumMap.containsKey(pre_sum))
+            {
+                
+                res = Math.max(res, i - sumMap.get(pre_sum));
+                
+            }else{
+                sumMap.put(pre_sum,i);
+            }
+        }
+        return res;
+    }
+}
 
-
+==========================================================================================================================
 import java.util.HashMap;
 import java.util.Map;
 
