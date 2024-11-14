@@ -1,0 +1,24 @@
+class Solution{
+    boolean isSubSequence(String A, String B){
+        
+        int n = A.length();
+        int m = B.length();
+        int j = 0;
+        
+        if(m > n)
+        {
+            return false;
+        }
+        
+        for(int i = 0; i < n && j < m; i++)
+        {
+            if(A.charAt(i) == B.charAt(j))
+            {
+                j++;
+            }
+            
+        }
+        
+          return (j == m);
+    }
+}
