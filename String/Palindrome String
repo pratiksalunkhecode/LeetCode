@@ -1,3 +1,5 @@
+Time: O(n)
+========================================
 class Solution {
     boolean isPalindrome(String s) {
         // code here
@@ -20,3 +22,32 @@ class Solution {
     }
 
 };
+========================================
+***handling case for non-alphanumeric
+
+class Solution {
+    public boolean isPalindrome(String s) {
+    
+        // Remove all non-alphanumeric characters and convert to lowercase
+        //replaceAll("[^a-zA-Z0-9]", ""):
+        // This line removes any characters that are not letters (a-z, A-Z) or numbers (0-9).
+        // The ^ symbol inside the brackets means "not," so [ ^a-zA-Z0-9 ]
+        // matches anything that's not a letter or a number.
+        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int low = 0;
+        int high = s.length()-1;
+
+        while(low < high)
+        {
+            if(s.charAt(low) != s.charAt(high))
+            {
+                return false;
+            }
+            low++;
+            high--;
+        }
+        return true;
+    }
+    
+}
+
