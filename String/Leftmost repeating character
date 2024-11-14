@@ -35,3 +35,34 @@ class Solution
         return '#';
     }
 }
+==================================
+Time: O(n)
+Space: O(n)
+
+class Solution
+{
+    public static final int CHAR=256;
+    
+    char firstRep(String S)
+    {
+        // your code here
+        int n = S.length();
+        
+        int[] count=new int[CHAR];
+       
+       for(int i = 0; i < n; i++)
+       {
+           count[S.charAt(i)]++;
+       }
+       
+       for(int i = 0; i < n; i++)
+       {
+           if(count[S.charAt(i)] > 1)
+           {
+               return S.charAt(i);
+           }
+       }
+       return '#';
+    }
+}
+
