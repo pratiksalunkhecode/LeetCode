@@ -33,3 +33,31 @@ class Solution {
         return '$';
     }
 }
+===========================================================================
+Time: O(n)
+Space: O(1)
+
+class Solution {
+     public static final int CHAR=256;
+    // Function to find the first non-repeating character in a string.
+    static char nonRepeatingChar(String s) {
+        // Your code here
+        int n = s.length();
+        int count[] = new int[CHAR];
+        
+        for(int i = 0; i < n; i++)
+        {
+            count[s.charAt(i)]++;
+        }
+        
+        for(int i = 0; i < n; i++)
+        {
+            if(count[s.charAt(i)] == 1)
+            {
+                return s.charAt(i);
+            }
+        }
+       return '$'; 
+    }
+}
+
