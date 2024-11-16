@@ -1,1 +1,50 @@
+Given a string s, reverse the string without reversing its individual words. Words are separated by spaces.
 
+Note: The string may contain leading or trailing spaces, or multiple spaces between two words. The returned string should only have a single space separating the words, and no extra spaces should be included.
+
+Examples :
+
+Input: s = " i like this program very much "
+Output: "much very program this like i"
+Explanation: After removing extra spaces and reversing the whole string (not individual words), the input string becomes "much very program this like i". 
+================================================================================
+Time: O(n)
+Space: O(n)
+================================
+class Solution {
+    static void reverse(char s[], int low, int high)
+    {
+        while(low < high)
+        {
+        char temp = s[low];
+        s[low] = s[high];
+        s[high] = temp;
+        low++;
+        high--;
+        }
+    }
+    // Function to reverse words in a given string.
+    String reverseWords(String s) {
+        // code here
+        // Convert the string to a character array for in-place modification
+        char[] chars = s.toCharArray();
+        int n = chars.length;
+      
+        int start = 0;
+        
+        for(int end = 0; end < n; end++)
+        {
+            if(chars[end] == ' ')
+            {
+                reverse(chars, start, end - 1);
+                start = end+1;
+            }
+        }
+        
+        reverse(chars, start, n-1);
+        reverse(chars, 0, n-1);
+         return new String(chars);
+    }
+   
+    
+}
