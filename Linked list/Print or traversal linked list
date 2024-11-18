@@ -1,0 +1,22 @@
+Given a linked list. Print all the elements of the linked list separated by space followed.
+
+Examples:
+
+Input: LinkedList : 1 -> 2
+
+Output: 1 2
+Explanation: The linked list contains two elements 1 and 2.The elements are printed in a single line.
+============================================================
+class Solution {
+    void display(Node head) {
+        // add code here.
+        
+        Node curr = head;
+        
+        while(curr != null)
+        {
+            System.out.print(curr.data+" ");
+            curr = curr.next;
+        }
+    }
+}
