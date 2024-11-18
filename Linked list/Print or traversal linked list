@@ -7,6 +7,9 @@ Input: LinkedList : 1 -> 2
 Output: 1 2
 Explanation: The linked list contains two elements 1 and 2.The elements are printed in a single line.
 ============================================================
+Time: O(n)
+Space: O(1)
+============================================================
 class Solution {
     void display(Node head) {
         // add code here.
