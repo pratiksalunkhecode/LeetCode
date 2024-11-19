@@ -1,0 +1,32 @@
+Given a doubly linked list. Your task is to reverse the doubly linked list and return its head.
+
+Examples:
+
+Input: LinkedList: 3 <-> 4 <-> 5
+Output: 5 <-> 4 <-> 3
+==========================================================================
+class Solution {
+    public DLLNode reverseDLL(DLLNode head) {
+        // Your code here
+        
+        
+        
+        if(head == null || head.next == null)
+        {
+            return head;
+        }
+        
+        DLLNode curr = head;
+        DLLNode prev = null;
+        
+        while(curr != null)
+        {
+            prev = curr.prev;
+            curr.prev = curr.next;
+            curr.next = prev;
+            curr = curr.prev;
+        }
+        
+        return prev.prev;
+    }
+}
