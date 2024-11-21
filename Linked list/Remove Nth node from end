@@ -1,0 +1,51 @@
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
+
+Example 1:
+
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+==========================================================================
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        int len = 0;
+        ListNode curr = head;
+        
+        while(curr != null)
+        {
+            len++;
+            curr = curr.next;
+        }
+        
+        if(len < n)
+        {
+            return head;
+        }
+        
+        ListNode curr1 = dummy;
+        
+        for(int i = 0; i < len-n; i++)
+        {
+            curr1 = curr1.next;
+            
+        }
+        
+        curr1.next = curr1.next.next;
+        
+        return dummy.next;
+        
+    }
+}
