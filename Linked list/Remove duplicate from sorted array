@@ -2,6 +2,14 @@ Q) Given the head of a sorted linked list, delete all duplicates such that each 
 Example 1:
 Input: head = [1,1,2]
 Output: [1,2]
+
+Approach:
+Traverse the list from the head (or start) node. While traversing, compare each node with its next node.
+If the data of the next node is the same as the current node then delete the next node.
+Before we delete a node, we need to store the next pointer of the node 
+
+Time Complexity: O(n)
+Space Complexity: O(1)
 ======================================
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
