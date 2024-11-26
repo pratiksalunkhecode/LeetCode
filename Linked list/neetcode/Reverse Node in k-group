@@ -1,0 +1,61 @@
+Q)Reverse Nodes in K-Group
+You are given the head of a singly linked list head and a positive integer k.
+You must reverse the first k nodes in the linked list, and then reverse the next k nodes, and so on. 
+If there are fewer than k nodes left, leave the nodes as they are.
+Return the modified list after reversing the nodes in each group of k.
+
+You are only allowed to modify the nodes' next pointers, not the values of the nodes.
+
+Input: head = [1,2,3,4,5], k = 3
+Output: [3,2,1,4,5]
+
+====================================================================================
+* public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+
+        ListNode temp = head;
+        int count = 0;
+        while(temp != null)
+        {
+            temp = temp.next;
+            count++;
+        }
+
+        if(count < k)
+        {
+            return head;
+        }
+        
+         ListNode curr = head;
+         ListNode prev = null;
+         ListNode next = null;
+         count = 0;
+
+         while(curr != null && count < k)
+         {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+         }
+          
+          if(next != null)
+          {
+            ListNode rest_head = reverseKGroup(next, k);
+            head.next = rest_head;
+          }
+
+          return prev;
+
+    }
+}
