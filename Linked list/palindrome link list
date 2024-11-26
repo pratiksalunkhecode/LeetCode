@@ -1,3 +1,5 @@
+Using Hasing
+========================================================================
 class Solution {
     // Function to check whether the list is palindrome.
     boolean isPalindrome(Node head) {
@@ -29,3 +31,33 @@ class Solution {
         return true;
     }
 }
+===========================================================================
+Using stack
+
+class Solution {
+    // Function to check whether the list is palindrome.
+    boolean isPalindrome(Node head) {
+        // Your code here
+       
+       Deque<Character> stack = new ArrayDeque<Character>();
+       
+     
+       
+       for(Node curr = head; curr != null; curr = curr.next)
+       {
+           stack.push((char) curr.data);
+           
+       }
+       
+       for(Node curr = head; curr != null; curr = curr.next)
+       {
+           if(stack.pop() != curr.data)
+           {
+               return false;
+           }
+       }
+       return true;
+       
+    }
+}
+
