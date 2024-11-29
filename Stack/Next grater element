@@ -1,0 +1,26 @@
+class Solution {
+    // Function to find the next greater element for each element of the array.
+    public ArrayList<Integer> nextLargerElement(int[] arr) {
+        // code here
+        int n = arr.length;
+      
+        ArrayList<Integer> list=new ArrayList<>();
+        Stack <Integer> s=new Stack<>();
+        // s.push(arr[n-1]);
+        // list.add(-1);
+        
+        for(int i = n-1; i >= 0; i--)
+        {
+            while(s.isEmpty() == false && s.peek() <= arr[i])
+            {
+                s.pop();
+            }
+            
+            int nextGrater = s.isEmpty() ? -1 : s.peek();
+            list.add(0,nextGrater);  // to adding this later no need to reverse list if you not add then time will increase
+            s.push(arr[i]);
+        }
+      //  Collections.reverse(list);   **************************
+        return list;
+    }
+}
