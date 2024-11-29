@@ -1,0 +1,52 @@
+Q) You are given a histogram represented by an array arr, where each element of the array denotes the height of the bars in the histogram. All bars have the same width of 1 unit.
+
+Your task is to find the largest rectangular area possible in the given histogram, where the rectangle can be formed using a number of contiguous bars.
+
+Examples:
+
+Input: arr[] = [6, 2, 5, 4, 5, 1, 6]
+Output: 12
+Explanation: In this example the largest area would be 12 of height 4 and width 3. We can achieve this area by choosing 3rd, 4th and 5th bars.
+=======================================================================================================================
+Time: O(n2)
+Space: O(1)
+=======================================================================================================================
+
+class Solution {
+    // Function to find largest rectangular area possible in a given histogram.
+    public static int getMaxArea(int arr[]) {
+        // your code here
+        
+        int n = arr.length;
+        
+        int res = 0;
+        
+        for(int i = 0; i < n; i++)
+        {
+            int curr = arr[i];
+            
+            for(int j =i - 1; j >= 0; j--)
+            {
+                if(arr[j] >= arr[i])
+                {
+                    curr = curr + arr[i];
+                }else{
+                    break;
+                }
+            }
+            
+             for(int j = i+ 1; j < n; j++)
+            {
+                if(arr[j] >= arr[i])
+                {
+                    curr = curr + arr[i];
+                }else{
+                    break;
+                }
+            }
+            res = Math.max(res, curr);
+        }
+        
+        return res;
+    }
+}
