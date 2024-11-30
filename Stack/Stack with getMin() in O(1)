@@ -1,0 +1,61 @@
+Q)Problem statement
+Create a stack data structure that allows operations such as push (adding an element), pop (removing the top element), top (retrieving the top element),
+and also provides a way to retrieve the minimum element in constant time.
+=========================================================================
+Time: O(1)
+Space: O(n)
+==========================================================================
+import java.util.Stack;
+
+public class Solution {
+    static class SpecialStack {
+
+             Stack<Integer> s1;
+             Stack<Integer> s2;
+
+        SpecialStack()
+        {
+s1=new Stack<>();
+s2=new Stack<>();
+        }
+
+
+        void push(int data) {
+            // Implement the push() function.
+
+           s1.push(data);
+
+           if(s2.isEmpty() || s2.peek() >= s1.peek()){
+               s2.push(data);
+           }
+            
+        }
+
+        void pop() {
+            // Implement the pop() function.
+
+            if(s1.isEmpty())
+            {
+             throw new RuntimeException("Stack is empty");
+            }
+            if(s1.peek().equals(s2.peek()))
+            {
+                
+                s2.pop();
+                
+            }
+            s1.pop();
+            
+        }
+
+        int top() {
+            // Implement the top() function.
+              return s1.peek();
+        }
+
+        int getMin() {
+            // Implement the getMin() function.
+            return s2.peek();
+        }
+    };
+}
