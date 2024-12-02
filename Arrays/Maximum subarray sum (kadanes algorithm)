@@ -33,12 +33,14 @@ class Solution {
 ===========================================================
 Optimal  
 o(n)
+===========================================================
+
 
 class Solution {
     public int maxSubArray(int[] nums) {
 
         int n = nums.length;
-        int res = nums[0];
+        int res = nums[0];         // if you not take res then you got error for input -2 -4 
         int maxEnding = nums[0];
 
         for(int i = 1; i < n; i++)
