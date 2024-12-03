@@ -37,3 +37,31 @@ class GfG{
         
     }
 }
+==================================================
+Time: O(n)
+Space: O(n)
+==================================================
+
+class GfG{
+    //Function to reverse the queue.
+    public Queue<Integer> rev(Queue<Integer> q){
+        //add code here.
+        
+      if(q.isEmpty())
+      {
+          return q;
+      }
+        
+        int x = q.peek(); // take first element and store in x variable
+        q.remove();
+        
+        rev(q); // reverse from i + 1 to n-1
+	    q.add(x); // add first element to last
+	    
+	    return q; // return reversed q
+	        
+        
+        
+        
+    }
+}
