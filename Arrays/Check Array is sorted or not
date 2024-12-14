@@ -1,6 +1,5 @@
 Naive solution
 
-
 class Solution {
     public boolean arraySortedOrNot(List<Integer> arr) {
     
