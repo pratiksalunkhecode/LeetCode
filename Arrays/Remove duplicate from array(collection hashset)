@@ -1,0 +1,33 @@
+Q) Given an array arr of integers which may or may not contain duplicate elements. Your task is to remove duplicate elements.
+
+Examples:
+Input: arr[] = [1, 2, 3, 1, 4, 2]
+Output: [1, 2, 3, 4]
+Explanation: 2 and 1 have more than 1 occurence.
+
+Overall:
+Time Complexity: O(n)
+Space Complexity: O(n)
+===================================================================
+class Solution {
+
+    static ArrayList<Integer> removeDuplicate(int arr[]) {
+        // code here
+        
+        int n = arr.length;
+        ArrayList<Integer> list = new ArrayList<>();
+         HashSet<Integer> set = new HashSet<>();
+
+  
+        
+        for(int i = 0; i < n; i++)
+        {
+            
+            if (!set.contains(arr[i])) {
+                set.add(arr[i]); // Add to HashSet
+                list.add(arr[i]); // Add to result list
+            }
+        }
+        return list;
+    }
+}
