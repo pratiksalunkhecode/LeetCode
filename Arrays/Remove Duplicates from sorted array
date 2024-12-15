@@ -1,0 +1,21 @@
+class Solution {
+    // Function to remove duplicates from the given array
+    public int removeDuplicates(int[] arr) {
+        // Code Here
+        
+        int n = arr.length;
+        int res = 1;
+      //  ArrayList<Integer> list = new ArrayList<>();
+       // list.add(arr[0]);
+        
+        for(int i = 1; i < n; i++)
+        {
+            if(arr[i] != arr[res-1])
+            {
+                arr[res] = arr[i];
+                res++;
+            }
+        }
+        return res;
+    }
+}
