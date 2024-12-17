@@ -1,4 +1,4 @@
-Time: o(n*n)
+Time: o(nd)
 ======================
 
 class Solution {
